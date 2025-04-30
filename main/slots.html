@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unlimited - Slots</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000000;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #0b0033;
+    }
+    footer {
+      background-color: #d4d1e3;
+    }
+    nav a:hover, nav a.active {
+      color: #00aaff;
+    }
+    .top-bar {
+      font-size: 12px;
+      padding: 2px 15px;
+      background-color: #ffffff;
+      color: #000;
+      display: flex;
+      justify-content: space-between;
+    }
+    .top-bar span {
+      font-weight: bold;
+    }
+    .game-grid {
+      background-color: #07003c;
+      padding: 20px;
+      border-radius: 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      justify-items: center;
+    }
+    .game-slot {
+      background-color: #000;
+      border: 2px solid #0af;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      width: 55%;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .game-slot:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+    .game-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .main-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 20px;
+    }
+    .ad {
+      width: 80px;
+      min-height: 100%;
+      background-color: #5d5775;
+      color: white;
+      text-align: center;
+      padding-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid px-0">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <span>Contact Us</span>
+      <div>
+        <span class="me-3">Login</span>
+        <span>Sign in</span>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="text-white py-3 px-3 d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <img src="assets/home gambar/logo unlimited.jpeg" alt="Logo" height="60" class="me-2" />
+        <div>
+          <div style="font-size: 18px;"><strong>Unlimited</strong></div>
+          <div style="font-size: 12px;">Break The Limit</div>
+        </div>
+      </div>
+      <nav class="d-flex gap-3 align-items-center flex-wrap">
+        <a href="home.html" class="text-white text-decoration-none">Home</a>
+        <a href="slots.html" class="text-white text-decoration-none active">Slots</a>
+        <a href="#" class="text-white text-decoration-none">Casino</a>
+        <a href="#" class="text-white text-decoration-none">Sports</a>
+        <a href="#" class="text-white text-decoration-none">Arcade</a>
+        <a href="#" class="text-white text-decoration-none">Poker</a>
+        <a href="#" class="text-white text-decoration-none">Live TV</a>
+      </nav>
+    </header>
+
+    <!-- Main Section with Ads -->
+    <div class="main-content">
+      <div class="ad">Iklan</div>
+
+      <div class="flex-fill px-3">
+        <div class="game-grid">
+          <div class="game-slot"><img src="assets/slots/1.png" alt="Game 1"></div>
+          <div class="game-slot"><img src="assets/slots/2.png" alt="Game 2"></div>
+          <div class="game-slot"><img src="assets/slots/3.png" alt="Game 3"></div>
+          <div class="game-slot"><img src="assets/slots/4.png" alt="Game 4"></div>
+          <div class="game-slot"><img src="assets/slots/5.png" alt="Game 5"></div>
+          <div class="game-slot"><img src="assets/slots/6.png" alt="Game 6"></div>
+          <div class="game-slot"><img src="assets/slots/7.png" alt="Game 7"></div>
+          <div class="game-slot"><img src="assets/slots/8.png" alt="Game 8"></div>
+          <div class="game-slot"><img src="assets/slots/9.png" alt="Game 9"></div>
+          <div class="game-slot"><img src="assets/slots/10.png" alt="Game 10"></div>
+          <div class="game-slot"><img src="assets/slots/11.png" alt="Game 11"></div>
+          <div class="game-slot"><img src="assets/slots/12.png" alt="Game 12"></div>
+          <div class="game-slot"><img src="assets/slots/13.png" alt="Game 13"></div>
+          <div class="game-slot"><img src="assets/slots/14.png" alt="Game 14"></div>
+          <div class="game-slot"><img src="assets/slots/15.png" alt="Game 15"></div>
+          <div class="game-slot"><img src="assets/slots/16.png" alt="Game 16"></div>
+          <div class="game-slot"><img src="assets/slots/17.png" alt="Game 17"></div>
+          <div class="game-slot"><img src="assets/slots/18.png" alt="Game 18"></div>
+          <div class="game-slot"><img src="assets/slots/19.png" alt="Game 19"></div>
+          <div class="game-slot"><img src="assets/slots/20.png" alt="Game 20"></div>
+        </div>
+      </div>
+
+      <div class="ad">Iklan</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-dark py-3 d-flex justify-content-around">
+      <div><strong>About</strong></div>
+      <div><strong>Pusat Bantuan</strong></div>
+      <div><strong>Syarat dan Ketentuan</strong></div>
+    </footer>
+  </div>
+</body>
+</html>
