@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unlimited - Casino</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #0b0033;
+    }
+    footer {
+      background-color: #d4d1e3;
+    }
+    nav a:hover, nav a.active {
+      color: #00aaff;
+    }
+    .top-bar {
+      font-size: 12px;
+      padding: 2px 15px;
+      background-color: #fff;
+      color: #000;
+      display: flex;
+      justify-content: space-between;
+    }
+    .top-bar span {
+      font-weight: bold;
+    }
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background: url('assets/casino/banner.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px #000;
+    }
+    .banner .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      font-size: 24px;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .banner .left-arrow {
+      left: 10px;
+    }
+    .banner .right-arrow {
+      right: 10px;
+    }
+    .main-content {
+      display: flex;
+      padding: 20px;
+      background-color: #07003c;
+    }
+    .ad {
+      width: 80px;
+      background-color: #5d5775;
+      color: white;
+      text-align: center;
+      padding-top: 20px;
+      font-weight: bold;
+      min-height: 100%;
+    }
+    .casino-grid {
+      flex-grow: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      justify-items: center;
+    }
+    .casino-card {
+      background-color: #000;
+      border: 2px solid #0af;
+      border-radius: 25px;
+      overflow: hidden;
+      transition: transform 0.3s;
+      width: 100%;
+      aspect-ratio: 1.5 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .casino-card:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+    .casino-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid px-0">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <span>Contact Us</span>
+      <div>
+        <span class="me-3">Login</span>
+        <span>Sign in</span>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="text-white py-3 px-3 d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <img src="assets/home gambar/logo unlimited.jpeg" alt="Logo" height="60" class="me-2" />
+        <div>
+          <div style="font-size: 18px;"><strong>Unlimited</strong></div>
+          <div style="font-size: 12px;">Break The Limit</div>
+        </div>
+      </div>
+      <nav class="d-flex gap-3 align-items-center flex-wrap">
+        <a href="home.html" class="text-white text-decoration-none">Home</a>
+        <a href="slots.html" class="text-white text-decoration-none">Slots</a>
+        <a href="casino.html" class="text-white text-decoration-none active">Casino</a>
+        <a href="sports.html" class="text-white text-decoration-none">Sports</a>
+        <a href="arcade.html" class="text-white text-decoration-none">Arcade</a>
+        <a href="poker.html" class="text-white text-decoration-none">Poker</a>
+        <a href="Live TV.html" class="text-white text-decoration-none">Live TV</a>
+      </nav>
+    </header>
+
+    <!-- Banner Section -->
+    <div class="banner">
+      <button class="arrow left-arrow">&larr;</button>
+      LIVE CASINO
+      <button class="arrow right-arrow">&rarr;</button>
+    </div>
+
+    <!-- Main Grid Content with Ads -->
+    <div class="main-content">
+      <div class="ad">Iklan</div>
+      <div class="casino-grid">
+        <div class="casino-card"><img src="assets/casino gambar/aowruoawur.png" alt="AG Gaming"></div>
+        <div class="casino-card"><img src="assets/casino gambar/fowfhoawhf.png" alt="Pragmatic"></div>
+        <div class="casino-card"><img src="assets/casino gambar/livecasino-EBET-web.png" alt="N2Live"></div>
+        <div class="casino-card"><img src="assets/casino gambar/livecasino-GP-mobile.png" alt="GamePlay"></div>
+        <div class="casino-card"><img src="assets/casino gambar/livecasino-GP-web.png" alt="Playtech"></div>
+        <div class="casino-card"><img src="assets/casino gambar/livecasino-ION-web.png" alt="Ebet"></div>
+        <div class="casino-card"><img src="assets/casino gambar/livecasino-PT-web.png" alt="Iconic"></div>
+        <div class="casino-card"><img src="assets/casino gambar/livecasino-SA-web.png" alt="SA Gaming"></div>
+      </div>
+      <div class="ad">Iklan</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-dark py-3 d-flex justify-content-around">
+      <div><strong>About</strong></div>
+      <div><strong>Pusat Bantuan</strong></div>
+      <div><strong>Syarat dan Ketentuan</strong></div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game 1 - Pong</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000000;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+    footer {
+      background-color: #d4d1e3;
+      color: black;
+      padding: 10px;
+      text-align: center;
+    }
+    canvas {
+      background-color: #111;
+      margin: 20px auto;
+    }
+    .money-display {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Game 1: Pong</h1>
+    <canvas id="pongCanvas" width="600" height="400"></canvas>
+    <div class="money-display">
+      <span>Money: $<span id="moneyAmount">0</span></span>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Unlimited Casino. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Setting up the canvas and context
+    const canvas = document.getElementById('pongCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Create the Pong paddle and ball
+    const paddleWidth = 10, paddleHeight = 100;
+    const ballRadius = 10;
+
+    let ball = {
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+      radius: ballRadius,
+      speedX: 4,
+      speedY: 4,
+      directionX: 1,
+      directionY: 1
+    };
+
+    let player1 = {
+      x: 0,
+      y: canvas.height / 2 - paddleHeight / 2,
+      width: paddleWidth,
+      height: paddleHeight,
+      speedY: 0
+    };
+
+    let player2 = {
+      x: canvas.width - paddleWidth,
+      y: canvas.height / 2 - paddleHeight / 2,
+      width: paddleWidth,
+      height: paddleHeight,
+      speedY: 0
+    };
+
+    // Money tracking
+    let money = 0;
+    const moneyDisplay = document.getElementById('moneyAmount');
+
+    // Control the paddles with keyboard
+    const upArrow = 38, downArrow = 40;
+    const wKey = 87, sKey = 83;
+
+    let upPressed = false, downPressed = false;
+    let wPressed = false, sPressed = false;
+
+    document.addEventListener('keydown', function(event) {
+      if (event.keyCode === upArrow) {
+        upPressed = true;
+      }
+      if (event.keyCode === downArrow) {
+        downPressed = true;
+      }
+      if (event.keyCode === wKey) {
+        wPressed = true;
+      }
+      if (event.keyCode === sKey) {
+        sPressed = true;
+      }
+    });
+
+    document.addEventListener('keyup', function(event) {
+      if (event.keyCode === upArrow) {
+        upPressed = false;
+      }
+      if (event.keyCode === downArrow) {
+        downPressed = false;
+      }
+      if (event.keyCode === wKey) {
+        wPressed = false;
+      }
+      if (event.keyCode === sKey) {
+        sPressed = false;
+      }
+    });
+
+    // Draw the paddles and ball
+    function drawPaddles() {
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(player1.x, player1.y, player1.width, player1.height);
+      ctx.fillRect(player2.x, player2.y, player2.width, player2.height);
+    }
+
+    function drawBall() {
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2, false);
+      ctx.fillStyle = '#ffffff';
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    // Update positions of paddles and ball
+    function update() {
+      // Move paddles
+      if (upPressed && player2.y > 0) {
+        player2.y -= 6;
+      }
+      if (downPressed && player2.y + player2.height < canvas.height) {
+        player2.y += 6;
+      }
+      if (wPressed && player1.y > 0) {
+        player1.y -= 6;
+      }
+      if (sPressed && player1.y + player1.height < canvas.height) {
+        player1.y += 6;
+      }
+
+      // Move ball
+      ball.x += ball.speedX * ball.directionX;
+      ball.y += ball.speedY * ball.directionY;
+
+      // Collision detection with top and bottom walls
+      if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) {
+        ball.directionY = -ball.directionY;
+      }
+
+      // Collision detection with paddles
+      if (ball.x - ball.radius < player1.x + player1.width && ball.y > player1.y && ball.y < player1.y + player1.height) {
+        ball.directionX = 1;
+        ball.speedX += 0.5; // Increase speed after hitting paddle
+      }
+      if (ball.x + ball.radius > player2.x && ball.y > player2.y && ball.y < player2.y + player2.height) {
+        ball.directionX = -1;
+        ball.speedX += 0.5; // Increase speed after hitting paddle
+      }
+
+      // Ball goes out of bounds (left side or right side)
+      if (ball.x - ball.radius < 0) {
+        // Player 2 scores, decrease money by $5
+        money -= 5;
+        resetBall();
+      } else if (ball.x + ball.radius > canvas.width) {
+        // Player 1 scores, increase money by $5
+        money += 5;
+        resetBall();
+      }
+
+      // Update the money display
+      moneyDisplay.textContent = money;
+
+      // Clear canvas and redraw everything
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawPaddles();
+      drawBall();
+    }
+
+    // Reset ball position after scoring
+    function resetBall() {
+      ball.x = canvas.width / 2;
+      ball.y = canvas.height / 2;
+      ball.speedX = 4;
+      ball.speedY = 4;
+    }
+
+    // Game loop
+    function gameLoop() {
+      update();
+      requestAnimationFrame(gameLoop);
+    }
+
+    // Start the game loop
+    gameLoop();
+  </script>
+
+</body>
+</html>
